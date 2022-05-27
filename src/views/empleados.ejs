@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Nodejs Mysql CRUD</title>
+    <!-- NAVIGATION -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  </head>
+  <body>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Casa Tlatoani</a>
+    </nav>
+
+
+    <h1 style="text-align:center">Empleados</h1>
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <td>id</td>
+                  <td>Nombre</td>
+                  <td>Direcion</td>
+                  <td>Telefono</td>
+                  <td>Aciones</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (data) { %>
+                  <% for(var i = 0; i < data.length; i++) { %>
+                    <tr>
+                      <td><%= (i + 1) %></td>
+                      <td><%= data[i].nombre %></td>
+                      <td><%= data[i].direccion %></td>
+                      <td><%= data[i].telefono %></td>
+                      <td>
+                        <a href="/update/<%= data[i].id %>" class="btn btn-info">Editar</a>
+                        <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                      </td>
+                    </tr>
+                  <% } %>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">
+      
+              <form action="/add" method="POST">
+                <div class="form-group">
+                  <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="direccion" placeholder="Dirección" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="telefono" placeholder="Telefono" class="form-control">
+                </div>
+      
+                <button type="submit" class="btn btn-primary">
+                  Guardar Empleado
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</body>
+</html>

@@ -39,7 +39,6 @@ controller.update = (req, res) => {
   const { id } = req.params;
   const newEmpleado= req.body;
   console.log(newEmpleado);
-  console.log(telefono);
   req.getConnection((err, conn) => {
     conn.query('UPDATE empleado set ? where id = ?', [newEmpleado, id], (err, rows) => {
     res.redirect('/');

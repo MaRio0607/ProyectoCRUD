@@ -1,6 +1,6 @@
 {
     "database" : "crudnodejsmysql"
     ,"user" : "root"
-    ,"password" : ""
+    ,"password" : "contraseña"
     ,"host" : "localhost"
 }

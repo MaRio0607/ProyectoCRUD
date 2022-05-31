@@ -1,6 +1,0 @@
-{
-    "database" : "crudnodejsmysql"
-    ,"user" : "root"
-    ,"password" : ""
-    ,"host" : "localhost"
-}

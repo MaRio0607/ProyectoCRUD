@@ -68,6 +68,75 @@
           </div>
         </div>
       </div>
-    
+
+      <h1 style="text-align:center">Paciente</h1>
+      <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-7">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <td>id</td>
+                    <td>Nombre</td>
+                    <td>Edad</td>
+                    <td>Fecha de ingreso</td>
+                    <td>Fecha de salida</td>
+                    <td>Familiar acargo</td>
+                    <td>Telafono de Familiar</td>
+
+                    <td>Aciones</td>
+                  </tr>
+                </thead>
+                <!-- <tbody>
+                  <% if (data) { %>
+                    <% for(var i = 0; i < data.length; i++) { %>
+                      <tr>
+                        <td><%= (i + 1) %></td>
+                        <td><%= data[i].nombre %></td>
+                        <td><%= data[i].direccion %></td>
+                        <td><%= data[i].telefono %></td>
+                        <td>
+                          <a href="/update/<%= data[i].id %>" class="btn btn-info">Editar</a>
+                          <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                        </td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                </tbody> -->
+              </table>
+            </div>
+            <div class="col-md-5">
+              <div class="card-body">
+        
+                <form action="/add" method="POST" style="margin-left: 100px;">
+                  <div class="form-group">
+                    <input type="text" name="nombre_paciente" placeholder="Nombre" class="form-control" autofocus>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="edad" placeholder="Edad" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="fecha_de_ingreso" placeholder="Fecha de Ingreso" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="fecha_de_salida" placeholder="Fecha de Salida" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="familiar_acargo" placeholder="Fecha de Salida" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="telefono_familiar" placeholder="Telefono" class="form-control">
+                  </div>
+        
+        
+                  <button type="submit" class="btn btn-primary">
+                    Guardar Paciente
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
 </body>
 </html>

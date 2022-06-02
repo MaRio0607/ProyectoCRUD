@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-06-2022 a las 22:40:44
+-- Tiempo de generación: 02-06-2022 a las 23:52:53
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   `fecha_de_ingreso` date DEFAULT NULL,
   `fecha_de_salida` date DEFAULT NULL,
   `familiar_acargo` varchar(50) NOT NULL,
-  `telefono` varchar(15) DEFAULT NULL,
+  `telefono_familiar` varchar(15) DEFAULT NULL,
   `fechaActualizacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_paciente`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

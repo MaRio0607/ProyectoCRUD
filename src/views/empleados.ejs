@@ -37,8 +37,8 @@
                       <td><%= data[i].direccion %></td>
                       <td><%= data[i].telefono %></td>
                       <td>
-                        <a href="/update/<%= data[i].id %>" class="btn btn-info">Editar</a>
-                        <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                        <a href="/update/empleado/<%= data[i].id %>" class="btn btn-info">Editar</a>
+                        <a href="/delete/empleado/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
                       </td>
                     </tr>
                   <% } %>
@@ -49,7 +49,7 @@
           <div class="col-md-5">
             <div class="card-body">
       
-              <form action="/add" method="POST">
+              <form action="/add/empleado" method="POST">
                 <div class="form-group">
                   <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus>
                 </div>

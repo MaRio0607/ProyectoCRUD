@@ -9,6 +9,8 @@ const app = express();
 
 // importing routes
 const empleadoRoutes = require('./routes/empleado');
+const pacienteRoutes = require('./routes/paciente');
+
 
 // settings
 app.set('port', process.env.PORT || 3000);
@@ -29,6 +31,8 @@ app.use(express.urlencoded({extended: false}));
 
 // routes
 app.use('/', empleadoRoutes);
+app.use('/', pacienteRoutes);
+
 
 // // static files
 app.use(express.static(path.join(__dirname, 'public')));

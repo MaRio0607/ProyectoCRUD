@@ -11,6 +11,8 @@ const app = express();
 const homeRoutes = require('./routes/homeRoute');
 const empleadoRoutes = require('./routes/empleado');
 const pacienteRoutes = require('./routes/paciente');
+const instructorRoutes = require('./routes/instructor');
+
 
 
 
@@ -35,6 +37,8 @@ app.use(express.urlencoded({extended: false}));
 app.use('/', homeRoutes);
 app.use('/', empleadoRoutes);
 app.use('/', pacienteRoutes);
+app.use('/', instructorRoutes);
+
 
 
 // // static files

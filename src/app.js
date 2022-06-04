@@ -12,6 +12,8 @@ const homeRoutes = require('./routes/homeRoute');
 const empleadoRoutes = require('./routes/empleado');
 const pacienteRoutes = require('./routes/paciente');
 const instructorRoutes = require('./routes/instructor');
+const actividadesRoutes = require('./routes/actividad');
+
 
 
 
@@ -38,6 +40,8 @@ app.use('/', homeRoutes);
 app.use('/', empleadoRoutes);
 app.use('/', pacienteRoutes);
 app.use('/', instructorRoutes);
+app.use('/', actividadesRoutes);
+
 
 
 

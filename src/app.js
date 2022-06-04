@@ -46,7 +46,10 @@ app.use('/', actividadesRoutes);
 
 
 // // static files
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+app.set('css', path.join(__dirname,'css'));
+app.set('js', path.join(__dirname,'js'));
 
 // starting the server
 app.listen(app.get('port'), () => {

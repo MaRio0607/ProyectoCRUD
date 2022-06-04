@@ -8,8 +8,10 @@ const express = require('express'),
 const app = express();
 
 // importing routes
+const homeRoutes = require('./routes/homeRoute');
 const empleadoRoutes = require('./routes/empleado');
 const pacienteRoutes = require('./routes/paciente');
+
 
 
 // settings
@@ -30,6 +32,7 @@ app.use(myConnection(mysql, {
 app.use(express.urlencoded({extended: false}));
 
 // routes
+app.use('/', homeRoutes);
 app.use('/', empleadoRoutes);
 app.use('/', pacienteRoutes);
 

@@ -126,11 +126,8 @@
                 <tr>
                   <td>id</td>
                   <td>Nombre</td>
-                  <td>Edad</td>
-                  <td>Fecha de ingreso</td>
-                  <td>Fecha de salida</td>
-                  <td>Familiar acargo</td>
-                  <td>Telafono de Familiar</td>
+                  <td>Direccion</td>
+                  <td>Telefono</td>
 
                   <td>Aciones</td>
                 </tr>
@@ -140,15 +137,12 @@
                   <% for(var i = 0; i < data.length; i++) { %>
                     <tr>
                       <td><%= (i + 1) %></td>
-                      <td><%= data[i].nombre_paciente %></td>
-                      <td><%= data[i].edad %></td>
-                      <td><%= data[i].fecha_de_ingreso %></td>
-                      <td><%= data[i].fecha_de_salida %></td>
-                      <td><%= data[i].familiar_acargo %></td>
-                      <td><%= data[i].telefono_familiar %></td>
+                      <td><%= data[i].nombre_instructor %></td>
+                      <td><%= data[i].direccion_instructor %></td>
+                      <td><%= data[i].telefono_instructor %></td>
                       <td>
-                        <a href="/update/paciente/<%= data[i].id_paciente %>" class="btn btn-info">Editar</a>
-                        <a href="/delete/paciente/<%= data[i].id_paciente %>" class="btn btn-danger">Borrar</a>
+                        <a href="/update/instructor/<%= data[i].id_instructor %>" class="btn btn-info">Editar</a>
+                        <a href="/delete/instructor/<%= data[i].id_instructor %>" class="btn btn-danger">Borrar</a>
                       </td>
                     </tr>
                   <% } %>
@@ -159,29 +153,19 @@
           <div class="col-md-5"style="left: 200px;">
             <div class="card-body">
       
-              <form action="/add/paciente" method="POST">
+              <form action="/add/instructor" method="POST">
                 <div class="form-group">
-                  <input type="text" name="nombre_paciente" placeholder="Nombre" class="form-control" autofocus>
+                  <input type="text" name="nombre_instructor" placeholder="Nombre" class="form-control" autofocus>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="edad" placeholder="Edad" class="form-control">
+                  <input type="text" name="direccion_instructor" placeholder="Direccion" class="form-control">
                 </div>
                 <div class="form-group">
-                  <input type="text" name="fecha_de_ingreso" placeholder="Fecha de Ingreso" class="form-control">
+                  <input type="text" name="telefono_instructor" placeholder="Telefono" class="form-control">
                 </div>
-                <div class="form-group">
-                  <input type="text" name="fecha_de_salida" placeholder="Fecha de Salida" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="text" name="familiar_acargo" placeholder="Familiar acargo" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="text" name="telefono_familiar" placeholder="Telefono" class="form-control">
-                </div>
-      
       
                 <button type="submit" class="btn btn-primary">
-                  Guardar Paciente
+                  Guardar Instructor
                 </button>
               </form>
             </div>

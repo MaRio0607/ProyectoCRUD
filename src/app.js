@@ -13,6 +13,8 @@ const empleadoRoutes = require('./routes/empleado');
 const pacienteRoutes = require('./routes/paciente');
 const instructorRoutes = require('./routes/instructor');
 const actividadesRoutes = require('./routes/actividad');
+const buscarPaciente = require('./routes/buscarPaciente');
+
 
 
 
@@ -33,7 +35,7 @@ app.use(myConnection(mysql, {
     port: 3306,
     database: db_config['database']
   }, 'single'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: true}));
 
 // routes
 app.use('/', homeRoutes);
@@ -41,7 +43,7 @@ app.use('/', empleadoRoutes);
 app.use('/', pacienteRoutes);
 app.use('/', instructorRoutes);
 app.use('/', actividadesRoutes);
-
+app.use('/', buscarPaciente)
 
 
 

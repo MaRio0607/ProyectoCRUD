@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Nodejs Mysql CRUD</title>
+    <!-- NAVIGATION -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  </head>
+  <body>
+
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Casa Tlatoani</a>
+    </nav>
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>Nombre</td>
+            <td>Edad</td>
+            <td>Fecha de ingreso</td>
+            <td>Fecha de salida</td>
+            <td>Familiar acargo</td>
+            <td>Telafono de Familiar</td>
+
+            <td>Aciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <%data=data[0]%>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nombre_paciente %></td>
+                <td><%= data[i].edad %></td>
+                <td><%= data[i].fecha_de_ingreso === null ? '' : data[i].fecha_de_ingreso.toISOString().split('T')[0] %></td>
+                <td><%= data[i].fecha_de_salida === null ? '' : data[i].fecha_de_salida.toISOString().split('T')[0] %></td>
+                <td><%= data[i].familiar_acargo %></td>
+                <td><%= data[i].telefono_familiar %></td>
+                <td>
+                  <a href="/update/paciente/<%= data[i].id_paciente %>" class="btn btn-info">Editar</a>
+                  <a href="/delete/paciente/<%= data[i].id_paciente %>" class="btn btn-danger">Borrar</a>
+                </td>
+              </tr> 
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+</body>
+</html>

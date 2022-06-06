@@ -118,6 +118,13 @@
       <!--Header ends-->
 
     <h1 style="text-align:center">Paciente</h1>
+    <form action="/buscarpaciente" method="POST">
+      <div class="container mt-5">
+        <label for="site-search">Buscar Paciente:</label>
+        <input type="text" name="nombre_busqueda" placeholder="Nombre" class="form-control" autofocus>
+        <a href="/buscarpaciente" class="btn btn-info" style="margin-top: 10px;">Buscar</a>
+      </div>
+    </form>
     <div class="container mt-5">
         <div class="row">
           <div class="col-md-7">
@@ -178,7 +185,6 @@
                 <div class="form-group">
                   <input type="text" name="telefono_familiar" placeholder="Telefono" class="form-control">
                 </div>
-      
       
                 <button type="submit" class="btn btn-primary">
                   Guardar Paciente

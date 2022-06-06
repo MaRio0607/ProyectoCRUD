@@ -1,6 +1,8 @@
 const controller = {};
 
 controller.list = (req, res) => {
+  const newPacienteGet= req.body;
+
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM paciente', (err, pacientes) => {
      if (err) {
@@ -8,7 +10,9 @@ controller.list = (req, res) => {
      }
      res.render('pacientes', {
         data: pacientes
-     });
+     })     
+      //  console.log(newPacienteGet);
+       ;
     });
   });
 };

@@ -33,6 +33,13 @@ app.use(myConnection(mysql, {
     port: 3306,
     database: db_config['database']
   }, 'single'));
+  app.use(myConnection(mysql, {
+    host: db_config['host'],
+    user: db_config['user'],
+    password: db_config['password'],
+    port: 3306,
+    database: db_config['database']
+  }, 'single'));
 app.use(express.urlencoded({extended: false}));
 
 // routes

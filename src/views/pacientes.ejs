@@ -142,8 +142,8 @@
                       <td><%= (i + 1) %></td>
                       <td><%= data[i].nombre_paciente %></td>
                       <td><%= data[i].edad %></td>
-                      <td><%= data[i].fecha_de_ingreso %></td>
-                      <td><%= data[i].fecha_de_salida %></td>
+                      <td><%= data[i].fecha_de_ingreso === null ? '' : data[i].fecha_de_ingreso.toISOString().split('T')[0] %></td>
+                      <td><%= data[i].fecha_de_salida === null ? '' : data[i].fecha_de_salida.toISOString().split('T')[0] %></td>
                       <td><%= data[i].familiar_acargo %></td>
                       <td><%= data[i].telefono_familiar %></td>
                       <td>
@@ -167,10 +167,10 @@
                   <input type="text" name="edad" placeholder="Edad" class="form-control">
                 </div>
                 <div class="form-group">
-                  <input type="date" name="fecha_de_ingreso" placeholder="Fecha de Ingreso" class="form-control">
+                  <input type="text" name="fecha_de_ingreso" placeholder="Fecha de Ingreso" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control">
                 </div>
                 <div class="form-group">
-                  <input type="date" name="fecha_de_salida" placeholder="Fecha de Salida" class="form-control">
+                  <input type="text" name="fecha_de_salida" placeholder="Fecha de Salida"  onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control">
                 </div>
                 <div class="form-group">
                   <input type="text" name="familiar_acargo" placeholder="Familiar acargo" class="form-control">

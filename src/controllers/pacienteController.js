@@ -11,18 +11,26 @@ controller.list = (req, res) => {
      res.render('pacientes', {
         data: pacientes
      })     
-      //  console.log(newPacienteGet);
+        //console.log(pacientes[0]['fecha_de_ingreso']);
        ;
     });
   });
 };
 
+
 controller.save = (req, res) => {
   const data = req.body;
-  console.log(req.body)
+  console.log("fecha ingreso ", typeof(data['fecha_de_ingreso']));
+  console.log(req.body);
+  if(data['fecha_de_ingreso'] === ''){
+    data['fecha_de_ingreso'] = null;
+  }
+  if(data['fecha_de_salida'] === ''){
+    data['fecha_de_salida'] = null;
+  }
   req.getConnection((err, connection) => {
     const query = connection.query('INSERT INTO paciente set ?', data, (err, paciente) => {
-      console.log(paciente)
+      //console.log(paciente);
       res.redirect('/paciente');
     })
   })
@@ -57,6 +65,6 @@ controller.delete = (req, res) => {
       res.redirect('/paciente');
     });
   });
-}
+};
 
 module.exports = controller;

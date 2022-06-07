@@ -118,11 +118,11 @@
       <!--Header ends-->
 
     <h1 style="text-align:center">Paciente</h1>
-    <form action="/buscarpaciente" method="POST">
+    <form action="/buscarpaciente/" method="POST">
       <div class="container mt-5">
         <label for="site-search">Buscar Paciente:</label>
-        <input type="text" name="nombre_busqueda" placeholder="Nombre" class="form-control" autofocus>
-        <a href="/buscarpaciente" class="btn btn-info" style="margin-top: 10px;">Buscar</a>
+        <input type="text" name="nombre_busqueda" id="nombre_busqueda" placeholder="Nombre" class="form-control" autofocus>
+        <a href="/buscarpaciente/<%=data.nombre_paciente%>" class="btn btn-info" style="margin-top: 10px;">Buscar</a>
       </div>
     </form>
     

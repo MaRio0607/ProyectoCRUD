@@ -11,7 +11,7 @@ controller.list = (req, res) => {
      res.render('pacientes', {
         data: pacientes
      })     
-        console.log(pacientes);
+        //console.log(pacientes);
        ;
     });
   });

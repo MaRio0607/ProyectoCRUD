@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jun 06, 2022 at 05:40 PM
--- Server version: 5.7.36
--- PHP Version: 7.4.26
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 07-06-2022 a las 00:29:41
+-- Versión del servidor: 5.7.36
+-- Versión de PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,12 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crudnodejsmysql`
+-- Base de datos: `crudnodejsmysql`
 --
 
 DELIMITER $$
 --
--- Procedures
+-- Procedimientos
 --
 DROP PROCEDURE IF EXISTS `buscarPaciente`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarPaciente` (IN `nombre_paciente_` VARCHAR(50))  BEGIN
@@ -39,12 +39,22 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllProducts` (IN `nombre_pacient
     WHERE nombre_paciente LIKE '%nombre_paciente_%';
 END$$
 
+--
+-- Funciones
+--
+DROP FUNCTION IF EXISTS `cantidad_actividad`$$
+CREATE DEFINER=`root`@`localhost` FUNCTION `cantidad_actividad` (`id_inst` INT) RETURNS INT(11) BEGIN
+	DECLARE numero int;
+    SELECT COUNT(*)into numero from actividad WHERE id_instructor = id_inst;
+    RETURN numero;
+END$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actividad`
+-- Estructura de tabla para la tabla `actividad`
 --
 
 DROP TABLE IF EXISTS `actividad`;
@@ -60,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `actividad` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `actividad`
+-- Volcado de datos para la tabla `actividad`
 --
 
 INSERT INTO `actividad` (`id_actividad`, `nombre_actividad`, `dia_de_actividad`, `hora_actividad`, `id_instructor`, `fechaActualizacion`) VALUES
@@ -69,7 +79,7 @@ INSERT INTO `actividad` (`id_actividad`, `nombre_actividad`, `dia_de_actividad`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `empleado`
+-- Estructura de tabla para la tabla `empleado`
 --
 
 DROP TABLE IF EXISTS `empleado`;
@@ -82,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `empleado`
+-- Volcado de datos para la tabla `empleado`
 --
 
 INSERT INTO `empleado` (`id`, `nombre`, `direccion`, `telefono`) VALUES
@@ -91,7 +101,7 @@ INSERT INTO `empleado` (`id`, `nombre`, `direccion`, `telefono`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instructor`
+-- Estructura de tabla para la tabla `instructor`
 --
 
 DROP TABLE IF EXISTS `instructor`;
@@ -105,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `instructor` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `instructor`
+-- Volcado de datos para la tabla `instructor`
 --
 
 INSERT INTO `instructor` (`id_instructor`, `nombre_instructor`, `direccion_instructor`, `telefono_instructor`, `fechaActualizacion`) VALUES
@@ -114,7 +124,7 @@ INSERT INTO `instructor` (`id_instructor`, `nombre_instructor`, `direccion_instr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paciente`
+-- Estructura de tabla para la tabla `paciente`
 --
 
 DROP TABLE IF EXISTS `paciente`;
@@ -128,18 +138,19 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   `telefono_familiar` varchar(15) DEFAULT NULL,
   `fechaActualizacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_paciente`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `paciente`
+-- Volcado de datos para la tabla `paciente`
 --
 
 INSERT INTO `paciente` (`id_paciente`, `nombre_paciente`, `edad`, `fecha_de_ingreso`, `fecha_de_salida`, `familiar_acargo`, `telefono_familiar`, `fechaActualizacion`) VALUES
 (5, 'Martin Castro', '34', '2022-06-30', '2022-06-17', 'Ema Torres', '97868', '2022-06-05 00:43:09'),
-(6, 'Gerardo Perez Perez', '80', '2022-06-01', '2022-06-01', 'Jesús García Hernandez', '', '2022-06-06 02:32:23');
+(6, 'Gerardo Perez Perez', '80', '2022-06-01', '2022-06-01', 'Jesús García Hernandez', '', '2022-06-06 02:32:23'),
+(18, 'Martin Martinez', '54', '2021-12-16', NULL, 'Dan Perez', '34294239080', '2022-06-06 21:31:17');
 
 --
--- Triggers `paciente`
+-- Disparadores `paciente`
 --
 DROP TRIGGER IF EXISTS `cambioPaciente`;
 DELIMITER $$
@@ -155,7 +166,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pacientenotificacion`
+-- Estructura de tabla para la tabla `pacientenotificacion`
 --
 
 DROP TABLE IF EXISTS `pacientenotificacion`;
@@ -167,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `pacientenotificacion` (
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pacientenotificacion`
+-- Volcado de datos para la tabla `pacientenotificacion`
 --
 
 INSERT INTO `pacientenotificacion` (`id_not`, `id_paciente`, `Fecha_Salida`) VALUES
@@ -188,7 +199,7 @@ INSERT INTO `pacientenotificacion` (`id_not`, `id_paciente`, `Fecha_Salida`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registroactividad`
+-- Estructura de tabla para la tabla `registroactividad`
 --
 
 DROP TABLE IF EXISTS `registroactividad`;

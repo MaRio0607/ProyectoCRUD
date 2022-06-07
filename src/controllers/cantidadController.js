@@ -1,11 +1,11 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  const nombre_paciente= req.body;
-  console.log(nombre_paciente);
+  const  id  = req.params['id_instructor'];
+  console.log('Obtiniendo cantidad',typeof(parseInt(id)));
 
   req.getConnection((err, conn) => {
-    conn.query('SELECT cantidad_actividad(?) ',1, (err, actividades) => {
+    conn.query('SELECT cantidad_actividad(?) ',parseInt(id), (err, actividades) => {
      if (err) {
       res.json(err);
      }

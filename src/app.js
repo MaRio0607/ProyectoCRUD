@@ -2,9 +2,11 @@ const express = require('express'),
       path = require('path'),
       morgan = require('morgan'),
       mysql = require('mysql'),
-      myConnection = require('express-myconnection')
+      myConnection = require('express-myconnection'),
       bodyParser = require('body-parser');
 
+var multer = require('multer');
+var upload = multer();
 
 const app = express();
 
@@ -36,8 +38,12 @@ app.use(myConnection(mysql, {
     port: 3306,
     database: db_config['database']
   }, 'single'));
+app.use(express.json());
+//app.use(express.urlencoded());
 app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(upload.array()); 
+app.use(express.static('public'));
 
 // routes
 app.use('/', homeRoutes);

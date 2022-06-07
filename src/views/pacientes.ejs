@@ -118,11 +118,11 @@
       <!--Header ends-->
 
     <h1 style="text-align:center">Paciente</h1>
-    <form action="/buscarpaciente/" method="POST">
+    <form action="/submit_form_with_post" method="POST">
       <div class="container mt-5">
         <label for="site-search">Buscar Paciente:</label>
         <input type="text" name="nombre_busqueda" id="nombre_busqueda" placeholder="Nombre" class="form-control" autofocus>
-        <a href="/buscarpaciente/<%=data.nombre_paciente%>" class="btn btn-info" style="margin-top: 10px;">Buscar</a>
+        <input type="submit", name="Buscar">
       </div>
     </form>
     
@@ -144,23 +144,23 @@
                 </tr>
               </thead>
               <tbody>
-                <% if (data) { %>
-                  <% for(var i = 0; i < data.length; i++) { %>
-                    <tr>
-                      <td><%= (i + 1) %></td>
-                      <td><%= data[i].nombre_paciente %></td>
-                      <td><%= data[i].edad %></td>
-                      <td><%= data[i].fecha_de_ingreso === null ? '' : data[i].fecha_de_ingreso.toISOString().split('T')[0] %></td>
-                      <td><%= data[i].fecha_de_salida === null ? '' : data[i].fecha_de_salida.toISOString().split('T')[0] %></td>
-                      <td><%= data[i].familiar_acargo %></td>
-                      <td><%= data[i].telefono_familiar %></td>
-                      <td>
-                        <a href="/update/paciente/<%= data[i].id_paciente %>" class="btn btn-info">Editar</a>
-                        <a href="/delete/paciente/<%= data[i].id_paciente %>" class="btn btn-danger">Borrar</a>
-                      </td>
-                    </tr>
-                  <% } %>
-                <% } %>
+                 <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nombre_paciente %></td>
+                <td><%= data[i].edad %></td>
+                <td><%= data[i].fecha_de_ingreso === null ? '' : data[i].fecha_de_ingreso.toISOString().split('T')[0] %></td>
+                <td><%= data[i].fecha_de_salida === null ? '' : data[i].fecha_de_salida.toISOString().split('T')[0] %></td>
+                <td><%= data[i].familiar_acargo %></td>
+                <td><%= data[i].telefono_familiar %></td>
+                <td>
+                  <a href="/update/paciente/<%= data[i].id_paciente %>" class="btn btn-info">Editar</a>
+                  <a href="/delete/paciente/<%= data[i].id_paciente %>" class="btn btn-danger">Borrar</a>
+                </td>
+              </tr> 
+            <% } %>
+          <% } %>
               </tbody>
             </table>
           </div>

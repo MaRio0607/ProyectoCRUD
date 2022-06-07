@@ -27,24 +27,26 @@
           </tr>
         </thead>
         <tbody>
-          <% if (data) { %>
-            <%data=data[0]%>
-            <% for(var i = 0; i < data.length; i++) { %>
-              <tr>
-                <td><%= (i + 1) %></td>
-                <td><%= data[i].nombre_paciente %></td>
-                <td><%= data[i].edad %></td>
-                <td><%= data[i].fecha_de_ingreso === null ? '' : data[i].fecha_de_ingreso.toISOString().split('T')[0] %></td>
-                <td><%= data[i].fecha_de_salida === null ? '' : data[i].fecha_de_salida.toISOString().split('T')[0] %></td>
-                <td><%= data[i].familiar_acargo %></td>
-                <td><%= data[i].telefono_familiar %></td>
-                <td>
-                  <a href="/update/paciente/<%= data[i].id_paciente %>" class="btn btn-info">Editar</a>
-                  <a href="/delete/paciente/<%= data[i].id_paciente %>" class="btn btn-danger">Borrar</a>
-                </td>
-              </tr> 
-            <% } %>
-          <% } %>
+          <tbody>
+            <% if (data) { %>
+       <%data=data[0]%>
+       <% for(var i = 0; i < data.length; i++) { %>
+         <tr>
+           <td><%= (i + 1) %></td>
+           <td><%= data[i].nombre_paciente %></td>
+           <td><%= data[i].edad %></td>
+           <td><%= data[i].fecha_de_ingreso === null ? '' : data[i].fecha_de_ingreso.toISOString().split('T')[0] %></td>
+           <td><%= data[i].fecha_de_salida === null ? '' : data[i].fecha_de_salida.toISOString().split('T')[0] %></td>
+           <td><%= data[i].familiar_acargo %></td>
+           <td><%= data[i].telefono_familiar %></td>
+           <td>
+             <a href="/update/paciente/<%= data[i].id_paciente %>" class="btn btn-info">Editar</a>
+             <a href="/delete/paciente/<%= data[i].id_paciente %>" class="btn btn-danger">Borrar</a>
+           </td>
+         </tr> 
+       <% } %>
+     <% } %>
+         </tbody>
         </tbody>
       </table>
 </body>

@@ -22,14 +22,12 @@
         </thead>
         <tbody>
           <% if (data) { %>
-            <% for(var i = 0; i < data.length; i++) { %>
-              <tr>
-                <!-- <td><%= data[i].id_instructor %></td>
-                <td><%= data[i].nombre_actividad %></td> -->
+            <% console.log('enEJS',typeof(data[0]['cantidad_actividad(1)'])) %>
 
+              <tr>
+                  <td><%= data[0]['cantidad_actividad(1)']%> </td>
               
               </tr>
-            <% } %>
           <% } %>
         </tbody>
       </table>

@@ -12,7 +12,7 @@ controller.list = (req, res) => {
      res.render('cantidades', {
         data: actividades
      })     
-        console.log(actividades);
+        console.log(actividades[0]['cantidad_actividad(1)']);
        ;
     });
   });

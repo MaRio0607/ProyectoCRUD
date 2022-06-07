@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Nodejs Mysql CRUD</title>
+    <!-- NAVIGATION -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  </head>
+    <body>
+        <!-- navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Casa Tlatoani</a>
+        </nav>       
+    </body>
+    <div class="col-md-7">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td>id</td>
+              <td>Nombre</td>
+              <td>Edad</td>
+              <td>Aciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (data) { %>
+              <% for(var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= (i + 1) %></td>
+                  <td><%= data[i].nombre_paciente %></td>
+                  <td><%= data[i].edad %></td>
+
+                  <td>
+                    <a href="/update/paciente/<%= data[i].id_paciente %>" class="btn btn-info">Editar</a>
+                    <a href="/delete/paciente/<%= data[i].id_paciente %>" class="btn btn-danger">Borrar</a>
+                  </td>
+                </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+</html>

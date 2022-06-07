@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-06-2022 a las 00:29:41
+-- Tiempo de generación: 07-06-2022 a las 01:46:05
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   `telefono_familiar` varchar(15) DEFAULT NULL,
   `fechaActualizacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_paciente`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `paciente`
@@ -147,7 +147,8 @@ CREATE TABLE IF NOT EXISTS `paciente` (
 INSERT INTO `paciente` (`id_paciente`, `nombre_paciente`, `edad`, `fecha_de_ingreso`, `fecha_de_salida`, `familiar_acargo`, `telefono_familiar`, `fechaActualizacion`) VALUES
 (5, 'Martin Castro', '34', '2022-06-30', '2022-06-17', 'Ema Torres', '97868', '2022-06-05 00:43:09'),
 (6, 'Gerardo Perez Perez', '80', '2022-06-01', '2022-06-01', 'Jesús García Hernandez', '', '2022-06-06 02:32:23'),
-(18, 'Martin Martinez', '54', '2021-12-16', NULL, 'Dan Perez', '34294239080', '2022-06-06 21:31:17');
+(18, 'Martin Martinez', '54', '2021-12-16', NULL, 'Dan Perez', '34294239080', '2022-06-06 21:31:17'),
+(19, 'Jesus C', '70', '2022-03-09', NULL, 'Misa Delgado', '478932948', '2022-06-07 01:44:44');
 
 --
 -- Disparadores `paciente`
@@ -199,6 +200,19 @@ INSERT INTO `pacientenotificacion` (`id_not`, `id_paciente`, `Fecha_Salida`) VAL
 -- --------------------------------------------------------
 
 --
+-- Estructura Stand-in para la vista `pacientes_mas_viejos`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `pacientes_mas_viejos`;
+CREATE TABLE IF NOT EXISTS `pacientes_mas_viejos` (
+`id_paciente` int(6) unsigned
+,`nombre_paciente` varchar(50)
+,`edad` varchar(15)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `registroactividad`
 --
 
@@ -209,6 +223,16 @@ CREATE TABLE IF NOT EXISTS `registroactividad` (
   KEY `id_actividad` (`id_actividad`),
   KEY `id_paciente` (`id_paciente`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `pacientes_mas_viejos`
+--
+DROP TABLE IF EXISTS `pacientes_mas_viejos`;
+
+DROP VIEW IF EXISTS `pacientes_mas_viejos`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pacientes_mas_viejos`  AS SELECT `paciente`.`id_paciente` AS `id_paciente`, `paciente`.`nombre_paciente` AS `nombre_paciente`, `paciente`.`edad` AS `edad` FROM `paciente` WHERE ((`paciente`.`nombre_paciente` is not null) AND (`paciente`.`edad` > 50)) ORDER BY `paciente`.`edad` DESC ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
